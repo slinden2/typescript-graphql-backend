@@ -9,7 +9,7 @@ const main = async () => {
   await createConnection();
 
   const schema = await buildSchema({
-    resolvers: [HelloResolver],
+    resolvers: [RegisterResolver],
   });
 
   const apolloServer = new ApolloServer({ schema });
