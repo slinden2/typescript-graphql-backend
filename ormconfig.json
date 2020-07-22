@@ -1,0 +1,9 @@
+{
+  "name": "default",
+  "type": "postgres",
+  "host": "localhost",
+  "username": "postgres",
+  "password": "postgres",
+  "database": "test",
+  "entities": ["src/entity/*.*"]
+}
