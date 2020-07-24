@@ -5,5 +5,7 @@
   "username": "postgres",
   "password": "postgres",
   "database": "test",
+  "logging": true,
+  "synchronize": true,
   "entities": ["src/entity/*.*"]
 }
