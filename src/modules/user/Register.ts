@@ -27,7 +27,7 @@ export class RegisterResolver {
       email,
     }).save();
 
-    await sendEmail(email, createConfirmationUrl(user.id))
+    await sendEmail(email, createConfirmationUrl(user.id));
 
     return user;
   }

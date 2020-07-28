@@ -4,7 +4,7 @@
   "host": "localhost",
   "username": "postgres",
   "password": "postgres",
-  "database": "test",
+  "database": "development",
   "logging": true,
   "synchronize": true,
   "entities": ["src/entity/*.*"]
