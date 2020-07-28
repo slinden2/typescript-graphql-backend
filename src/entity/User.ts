@@ -14,7 +14,7 @@ export class User extends BaseEntity {
 
   @Field()
   @Column()
-  lastName: string; 
+  lastName: string;
 
   @Field()
   @Column("text", { unique: true })
@@ -24,7 +24,7 @@ export class User extends BaseEntity {
   name(@Root() parent: User): string {
     return `${parent.firstName} ${parent.lastName}`;
   }
- 
+
   @Column()
   password: string;
 

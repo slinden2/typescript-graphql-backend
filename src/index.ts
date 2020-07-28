@@ -26,7 +26,7 @@ const main = async () => {
     schema,
     // TODO Add error formatter for validation errors.
     // formatError: error => error,
-    context: ({ req }) => ({ req }),
+    context: ({ req, res }) => ({ req, res }),
   });
 
   const app = express();
