@@ -6,6 +6,7 @@ import { LoginResolver } from "../modules/user/Login";
 import { LogoutResolver } from "../modules/user/Logout";
 import { MeResolver } from "../modules/user/Me";
 import { RegisterResolver } from "../modules/user/Register";
+import { CreateUserResolver } from "../modules/user/CreateUser";
 
 export const createSchema = () =>
   buildSchema({
@@ -17,6 +18,7 @@ export const createSchema = () =>
       LogoutResolver,
       MeResolver,
       RegisterResolver,
+      CreateUserResolver,
     ],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;
