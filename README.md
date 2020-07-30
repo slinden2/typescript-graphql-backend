@@ -1,7 +1,5 @@
-# Bugger
+# typescript-graphql-backend
 
-This is a bug tracking software.
+This is a basic backend that used Typescript and GraphQL.
 
-## Docs
-
-[Software Requirements Specification](docs/software-requirements-spec.md)
+Checkout `package.json` for more details about used libraries.
