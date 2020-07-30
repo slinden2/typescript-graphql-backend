@@ -5,6 +5,11 @@ import { createConnection } from "typeorm";
 import session from "express-session";
 import connectRedis from "connect-redis";
 import cors from "cors";
+import {
+  simpleEstimator,
+  getComplexity,
+  fieldExtensionsEstimator,
+} from "graphql-query-complexity";
 
 import { redis } from "./redis";
 import { createSchema } from "./utils/createSchema";
@@ -19,6 +24,30 @@ const main = async () => {
     // TODO Add error formatter for validation errors.
     // formatError: error => error,
     context: ({ req, res }) => ({ req, res }),
+    plugins: [
+      {
+        requestDidStart: () => ({
+          didResolveOperation({ request, document }) {
+            const complexity = getComplexity({
+              schema,
+              operationName: request.operationName,
+              query: document,
+              variables: request.variables,
+              estimators: [
+                fieldExtensionsEstimator(),
+                simpleEstimator({ defaultComplexity: 1 }),
+              ],
+            });
+
+            if (complexity > 20) {
+              throw new Error(
+                `Sorry, too complicated query! ${complexity} is over 20 that is the max allowed complexity.`
+              );
+            }
+          },
+        }),
+      },
+    ],
   });
 
   const app = express();
